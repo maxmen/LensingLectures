@@ -7,5 +7,5 @@ The notebooks focus on some python applications discussed during the lessons. Mo
 http://pico.bo.astro.it/~massimo/teaching.html
 
 The students have free access to programming courses kindly provided by
-DataCamp.com, to which I am thankful.
+DataCamp.com (https://www.datacamp.com). Thank you DataCamp!
 
