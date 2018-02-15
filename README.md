@@ -9,17 +9,16 @@ git clone https://github.com/maxmen/LensingLectures.git
 ```
 
 ## Structure of the repository
-The material consists of some lecture notes, jupyter notebooks, and slides. 
-
+ 
 The skeleton of the repository is as follows:
 ```bash
 ├── LensingLectures
-│   ├── Notebooks
-│   ├── Notes
-│   └── Presentations
-│
-└── old
+    ├── Notebooks
+    ├── Notes
+    ├── Presentations
+    └── old
 ```
+The material consists of some lecture notes (```Notes```), jupyter notebooks (```Notebooks```), and slides (```Presentations```).
 
 The material is uploaded during the course. To sync to the latest version, use 
 ```
