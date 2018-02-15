@@ -9,7 +9,7 @@ class deflector:
     # the boolean variable pad indicates whether zero-padding is used or not
     def __init__(self,filekappa,pad=False):
         kappa,header=pyfits.getdata(filekappa,header=True)
-        self.kappa=2.0*kappa
+        self.kappa=2.0*kappa # remember to correct the factor 2 here
         self.nx=kappa.shape[0]
         self.ny=kappa.shape[1]
         self.pad=pad
