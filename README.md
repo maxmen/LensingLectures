@@ -16,7 +16,7 @@ The skeleton of the repository is as follows:
 ├── LensingLectures
 │   ├── Notebooks
 │   ├── Notes
-│   ├── Presentations
+│   └── Presentations
 │
 └── old
 ```
