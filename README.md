@@ -29,6 +29,7 @@ git pull
 Material from the courses taught in the previous years can be found in subfolders named after the year of the course. For example, the subfolder ```old/2017``` contains the material for the course taught in 2017.
 
 
-The students have free access to programming courses kindly provided by
-DataCamp.com (https://www.datacamp.com). Thank you DataCamp!
+## Acknowledgements
+This class is supported by DataCamp (https://www.datacamp.com), the most intuitive learning platform for data science. Learn R, Python and SQL the way you learn best through a combination of short expert videos and hands-on-the-keyboard exercises. Take over 100+ courses by expert instructors on topics such as importing data, data visualization or machine learning and learn faster through immediate and personalised feedback on every exercise.
+
 
