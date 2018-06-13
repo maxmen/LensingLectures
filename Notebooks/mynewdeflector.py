@@ -218,15 +218,12 @@ class gen_lens(object):
     def find_images(self,y1,y2):
     
 
-        pc=np.linspace(-self.size/2.0,self.size/2.0,self.npix)
-        xk,yk=pc,pc#np.meshgrid(pc,pc)
-        y1s=y1/2.0/np.amax(xk)*xk.size+xk.size/2.0
-        y2s=y2/2.0/np.amax(xk)*xk.size+xk.size/2.0
-        # ray tracing from the lens to the source plane
-        xray=(xk-self.a1*self.pixel) # y1 coordinates on the source plane
-        yray=np.transpose(yk-np.transpose(self.a2*self.pixel)) # y2 coordinates on the source plane
-        xray=np.array(xray)/2.0/np.amax(xk)*xk.size+xk.size/2.0
-        yray=np.array(yray)/2.0/np.amax(xk)*xk.size+xk.size/2.0
+        y1s=(y1+self.size/2.0)/self.pixel
+        y2s=(y2+self.size/2.0)/self.pixel
+        pc=np.linspace(0,self.npix-1,self.npix)
+        xk,yk=pc,pc
+        xray=(xk-self.a1)
+        yray=np.transpose(yk-np.transpose(self.a2))
     
         # shift the maps by one pixel
         xray1=np.roll(xray,1,axis=1)
@@ -242,6 +239,8 @@ class gen_lens(object):
         distances of the vertices of the triangles on the source plane from the source 
         and check using cross-products if the source is inside one of the two triangles
         """
+        #l1=((yray1-yray2)*(ys1-xray2)+(xray2-xray1)*(ys2-yray2))/((yray1-yray2)*(xray-xray2)+(xray2-xray1)*(yray-yray2))
+
         x1=y1s-xray
         y1=y2s-yray
     
@@ -271,12 +270,12 @@ class gen_lens(object):
         yi_images_=images1[:,0]
         xi_images=xi_images_[(xi_images_>0) & (yi_images_>0)]
         yi_images=yi_images_[(xi_images_>0) & (yi_images_>0)]
-    
+
         # compute the weights
         w=np.array([1./np.sqrt(x1[xi_images,yi_images]**2+y1[xi_images,yi_images]**2),
             1./np.sqrt(x2[xi_images,yi_images]**2+y2[xi_images,yi_images]**2),
             1./np.sqrt(x3[xi_images,yi_images]**2+y3[xi_images,yi_images]**2)])
-        xif1,yif1=xi_images,yi_images#self.refineImagePositions(xi_images,yi_images,w,1)
+        xif1,yif1=self.refineImagePositions(xi_images,yi_images,w,1)
     
         # second kind of images
         images1=np.argwhere(image==2)
@@ -288,17 +287,17 @@ class gen_lens(object):
         # compute the weights
         w=np.array([1./np.sqrt(x1[xi_images,yi_images]**2+y1[xi_images,yi_images]**2),
             1./np.sqrt(x3[xi_images,yi_images]**2+y3[xi_images,yi_images]**2),
-            1./np.sqrt(x4[xi_images,yi_images]**2+y4[xi_images,yi_images]**2)])
-        xif2,yif2=xi_images,yi_images#self.refineImagePositions(xi_images,yi_images,w,1) # 1 or 2 here?        
-    
+            1./np.sqrt(x4[xi_images,yi_images]**2+y4[xi_images,yi_images]**2)])       
+        xif2,yif2=self.refineImagePositions(xi_images,yi_images,w,2)    
+
         xi=np.concatenate([xif1,xif2])
         yi=np.concatenate([yif1,yif2])
-        xi=(xi-xk.size/2.0)*self.pixel
-        yi=(yi-xk.size/2.0)*self.pixel
+        xi=(xi-self.npix/2.0-0.5)*self.pixel
+        yi=(yi-self.npix/2.0-0.5)*self.pixel
         return(xi,yi)
 
     def refineImagePositions(self,x,y,w,typ):
-        if (typ==1):
+        if (typ==2):
             xp=np.array([x,x+1,x+1])
             yp=np.array([y,y,y+1])
         else:
@@ -334,9 +333,9 @@ class gen_lens(object):
         x2pix=(xi2+self.size/2.0)/px
 
         a1 = map_coordinates(self.a1,
-                             [x2pix,x1pix],order=2)*px
+                             [x2pix,x1pix],order=5)*px
         a2 = map_coordinates(self.a2,
-                             [x2pix,x1pix],order=2)*px
+                             [x2pix,x1pix],order=5)*px
         
         y1=(xi1-a1) # y1 coordinates on the source plane
         y2=(xi2-a2) # y2 coordinates on the source plane
