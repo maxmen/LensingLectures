@@ -15,7 +15,6 @@ The skeleton of the repository is as follows:
 ```bash
 ├── LensingLectures
     ├── Notebooks
-    ├── Notes
     ├── Presentations
     └── old
 ```
