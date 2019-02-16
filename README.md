@@ -17,7 +17,7 @@ The skeleton of the repository is as follows:
     ├── Notebooks
     └── Presentations
 ```
-The material consists of some jupyter notebooks (```Notebooks```), and slides (```Presentations```).
+The material consists of some jupyter notebooks (```Notebooks```) and slides (```Presentations```).
 
 The material is uploaded during the course. To sync to the latest version, use 
 ```
