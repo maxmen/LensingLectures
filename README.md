@@ -1,7 +1,7 @@
 # LensingLectures
 
 The material in this repository is part of the Gravitational Lensing Course offered to master students in Astrophysics and Cosmology at the University of Bologna by Prof. Massimo Meneghetti.
-The course covers both the theory and the applications of gravitational lensing from microlensing, to lensing by galaxies and clusters, to cosmic shear. Concepts will be illustrated using examples coded in python.
+The course covers both the theory and the applications of gravitational lensing from microlensing, to lensing by galaxies and clusters. Concepts will be illustrated using examples coded in python.
 
 ## Instructions for download
 The full repository can be downloaded using git:
