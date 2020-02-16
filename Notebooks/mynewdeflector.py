@@ -84,7 +84,7 @@ class gen_lens(object):
     
     # plot of the critical lines
     def clines(self,ax=None,color='red',alpha=1.0,lt='-',fontsize=15):
-        cs=self.crit_lines(ax=ax,show=False)
+        cs=self.crit_lines(ax=ax,show=True)
         contour=cs.collections[0]
         p=contour.get_paths()
         sizevs=np.empty(len(p),dtype=int)
@@ -234,7 +234,7 @@ class gen_lens(object):
         yray3=np.roll(yray2,-1,axis=1)
     
         """
-        for each pixel on the lens plane, build two triangle. By means of ray-tracing 
+        for each pixel on the lens plane, build two triangles. By means of ray-tracing 
         these are mapped onto the source plane into other two triangles. Compute the 
         distances of the vertices of the triangles on the source plane from the source 
         and check using cross-products if the source is inside one of the two triangles
