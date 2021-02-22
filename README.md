@@ -14,10 +14,9 @@ git clone https://github.com/maxmen/LensingLectures.git
 The skeleton of the repository is as follows:
 ```bash
 ├── LensingLectures
-    ├── Notebooks
-    └── Presentations
+    └── Notebooks
 ```
-The material consists of some jupyter notebooks (```Notebooks```) and slides (```Presentations```).
+The material consists of some jupyter notebooks (```Notebooks```).
 
 The material is uploaded during the course. To sync to the latest version, use 
 ```
